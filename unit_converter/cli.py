@@ -3,6 +3,7 @@
 from dataclasses import dataclass, field
 
 from unit_converter.app.input_parser import parse
+from unit_converter.app.output_formatter import format_text_lines
 from unit_converter.domain.converter import Converter
 from unit_converter.domain.unit_registry import UnitRegistry
 
@@ -52,8 +53,7 @@ def handle_input(raw: str) -> HandleInputResult:
     converter = Converter(registry)
     unit_name, parsed_value = parse(raw)
     results = converter.convert_all(unit_name, parsed_value)
-    output_lines = [
-        f"{parsed_value} {unit_name} = {results[target]} {target}"
-        for target in registry.all_units()
-    ]
+    output_lines = format_text_lines(
+        unit_name, parsed_value, results, registry.all_units()
+    )
     return HandleInputResult(ok=True, output_lines=output_lines)
