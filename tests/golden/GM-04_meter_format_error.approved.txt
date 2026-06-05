@@ -1,0 +1,2 @@
+error_kind: format
+message: Invalid format. Use unit:value (ex: meter:2.5)

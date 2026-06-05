@@ -1,0 +1,2 @@
+error_kind: number
+message: Invalid number: abc
