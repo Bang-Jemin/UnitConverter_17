@@ -1,0 +1,2 @@
+error_kind: negative
+message: Negative values are not allowed
